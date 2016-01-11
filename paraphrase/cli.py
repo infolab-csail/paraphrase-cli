@@ -6,9 +6,15 @@ from paraphrase import wrapper
 
 def run_test_set(test_file, out_file, model):
     for l in open(test_file):
-        text, hypothesis = l.strip().split('\t')
+        text, hypothesis = l.strip().split(',')
         confidence, entailment = wrapper.query(text, hypothesis, model=model)
-        out_file.write('%s\t%s\t%s\t%s\n' % (text, hypothesis, entailment, confidence))
+
+        # for readability, if it's non-entailment we flip the confidence
+        if entailment == "NonEntailment":
+            confidence = 1.0 - confidence
+            entailment = "Entailment"
+
+        out_file.write('%s,%s,%s,%s\n' % (text, hypothesis, entailment, confidence))
 
 
 def main():
@@ -19,7 +25,7 @@ def main():
 
     parser.add_argument(
         "file",
-        help="tab-separated file with two sentences in each line",
+        help="comma-separated file with two sentences in each line",
         metavar="test_file",
     )
 
