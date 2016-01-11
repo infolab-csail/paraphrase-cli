@@ -18,17 +18,17 @@ Usage summary:
 
     usage: excitement [-h] [-m model] [-o out_file] test_file
     
-Specify your test set as a tab-separated file of text, hypothesis.
+Specify your test set as a comma-separated file of text, hypothesis.
 
-    John is in love with Mary       John likes Mary
-    John is in the park     John is not in his house
-    John is tall    John is a man
+    John is in love with Mary,John likes Mary
+    John is in the park,John is not in his house
+    John is tall,John is a man
 
-The output format is a tab-separated file of text, hypothesis, entailment relationship, and confidence score. If an output file is not specified, `excitement` will print to the console.
+The output format is a comma-separated file of text, hypothesis, entailment relationship, and confidence score. If an output file is not specified, `excitement` will print to the console.
 
-    John is in love with Mary	John likes Mary	Entailment	0.9813405993
-    John is in the park	John is not in his house	NonEntailment	0.759324448811
-    John is tall	John is a man	Entailment	0.994980828692
+    John is in love with Mary,John likes Mary,Entailment,0.9813405993
+    John is in the park,John is not in his house,Entailment,0.240675551189
+    John is tall,John is a man,Entailment,0.994980828692
 
 You can specify one of these models using the `--model` flag:
 
