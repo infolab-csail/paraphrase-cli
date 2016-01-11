@@ -31,7 +31,8 @@ def query(text, hypothesis, model='pieda'):
     # output of the biutee model breaks lxml's parsing
     encoding_str = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'
     report_xml = report_xml.replace(encoding_str, '')
-    report_xml = html.fromstring(report_xml)
+    report_xml = html.fromstring(report_xml).get_element_by_id('1')
 
-    confidence = float(report_xml.get_element_by_id('1').get('confidence'))
-    return confidence
+    entailment = report_xml.get('entailment')
+    confidence = float(report_xml.get('confidence'))
+    return confidence, entailment

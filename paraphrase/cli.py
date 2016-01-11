@@ -7,8 +7,8 @@ from paraphrase import wrapper
 def run_test_set(test_file, out_file, model):
     for l in open(test_file):
         text, hypothesis = l.strip().split('\t')
-        confidence = wrapper.query(text, hypothesis, model=model)
-        out_file.write('%s\t%s\t%s\n' % (text, hypothesis, confidence))
+        confidence, entailment = wrapper.query(text, hypothesis, model=model)
+        out_file.write('%s\t%s\t%s\t%s\n' % (text, hypothesis, entailment, confidence))
 
 
 def main():
