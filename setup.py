@@ -12,15 +12,15 @@ setup(
         'paraphrase'
     ],
     install_requires=[
+        'lxml',
         'requests',
-        'fake-useragent',
     ],
     tests_require=[
         'nose>=1.0',
     ],
     entry_points={
         'console_scripts': [
-            'paraphrase = paraphrase.cli:main',
+            'excitement = paraphrase.cli:main',
         ],
     },
     test_suite='nose.collector',
